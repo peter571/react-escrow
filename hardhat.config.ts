@@ -28,7 +28,7 @@ const config: HardhatUserConfig = {
     ...networks,
   },
   paths: {
-    artifacts: "./front-end/src/artifacts",
+    artifacts: "./frontend/src/artifacts",
   },
 };
 

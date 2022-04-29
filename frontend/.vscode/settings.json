@@ -1,0 +1,15 @@
+{
+  "css.customData": [
+    ".vscode/css_custom_data.json"
+  ],
+  "css.validate": false, // Disable css built-in lint
+  "stylelint.enable": true, // Enable sytlelint
+  "scss.validate": false, // Disable scss lint (optional if using scss)
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/some-soft-link-to-higher-level-directory-in-my-file-system": true,
+    "**/.cache-loader": true
+  }
+}
