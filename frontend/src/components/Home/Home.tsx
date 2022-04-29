@@ -13,7 +13,7 @@ const Home: FC = (): JSX.Element => {
             <p className="text-[#f3f1f3] transition duration-150 ease-in-out font-mono text-2xl">Send Your DAI Safely</p>
             {isConnected ? (
                 <Link
-                    className="text-[#FF7132] text-lg delay-150 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out flex justify-center items-center" to='/Contracts'>
+                    className="text-[#FF7132] text-lg delay-150 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out flex justify-center items-center" to='/'>
                     Go to Contracts
                     <BsArrowRight className="items-center ml-2" />
                 </Link>
