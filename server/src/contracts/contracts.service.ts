@@ -13,7 +13,7 @@ export class ContractsService {
     const newContract = await this.contractsModel.create(createContractDto);
     return await newContract.save();
   }
-
+ 
   async findAll(): Promise<Contract[]> {
     return await this.contractsModel.find().exec();
   }
