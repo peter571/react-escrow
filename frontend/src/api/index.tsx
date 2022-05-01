@@ -1,11 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://localhost:7000/'
+    baseURL: 'https://dai-escrow.herokuapp.com/'
 })
 
 const responseBody = (response: AxiosResponse) => response;
-
 const requests = {
     get: (url: string) => API.get(url).then(responseBody),
     post: (url: string, body: {}) => API.post(url, body).then(responseBody),
