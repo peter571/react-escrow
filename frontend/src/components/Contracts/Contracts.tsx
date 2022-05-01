@@ -33,7 +33,7 @@ function Contracts() {
                     <div className='flex flex-col w-full gap-4'>
                         {contracts?.map((contract: ContractProp) => {
                             const { beneficiary, arbiter, depositor } = contract;
-                            if (beneficiary.toLowerCase() == currentAccount.toLowerCase() || arbiter.toLowerCase() == currentAccount.toLowerCase() || depositor.toLowerCase() == currentAccount.toLowerCase()) {
+                            if (beneficiary.toLowerCase() === currentAccount.toLowerCase() || arbiter.toLowerCase() === currentAccount.toLowerCase() || depositor.toLowerCase() === currentAccount.toLowerCase()) {
                                return  <ExistingContract key={contract._id} {...contract} />
                             } 
                         })}
