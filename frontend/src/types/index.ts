@@ -18,6 +18,7 @@ export interface InitialStateProp {
     isConnected: boolean;
     contracts: ContractProp[];
     interest: string;
+    isConnecting: boolean;
 }
 
 export enum Type {
@@ -25,7 +26,8 @@ export enum Type {
     FETCH = 'FETCH',
     UPDATE = 'UPDATE',
     DELETE = 'DELETE',
-    INTEREST = 'INTEREST'
+    INTEREST = 'INTEREST',
+    CONNECTING = 'CONNECTING'
 }
 
 export interface Action {

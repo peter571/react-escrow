@@ -4,46 +4,13 @@ import { deploy, getCurrentInterest } from './deploy';
 import { ContractsService } from '../api';
 import Escrow from '../artifacts/contracts/Escrow.sol/Escrow.json';
 import { GlobalData, Action, EscrowProp, InitialStateProp, Type } from '../types'
+import { contractsReducer } from './reducer'
 
 declare var window: any;
 
 const { ethereum } = window;
 
 export const EscrowContext = React.createContext<GlobalData>({} as GlobalData)
-
-const contractsReducer = (state: any, action: Action) => {
-    switch (action.type) {
-        case 'CONNECT':
-            return {
-                ...state,
-                currentAccount: action.payload.address,
-                isConnected: action.payload.bool
-            }
-
-        case 'FETCH':
-            return {
-                ...state,
-                contracts: action.payload
-            }
-
-        case 'INTEREST':
-                return {
-                    ...state,
-                    interest: action.payload
-                }    
-
-        case 'UPDATE':
-            const updatedContracts = state.contracts.map((contract: any) => (contract._id === action.payload._id ? action.payload : contract));
-            return { ...state, contracts: updatedContracts };
-
-        case 'DELETE':
-            const latestContracts = state.contracts.filter((contract: any) => contract._id !== action.payload._id);
-            return { ...state, contracts: latestContracts };
-
-        default:
-            return state;
-    }
-}
 
 export const EscrowProvider = ({ children }: EscrowProp) => {
 
@@ -53,13 +20,25 @@ export const EscrowProvider = ({ children }: EscrowProp) => {
     const connectWallet = async () => {
         try {
             if (!ethereum) return alert("Please install MetaMask.");
+            dispatch({
+                type: Type.CONNECTING,
+                payload: true
+            })
             const accounts = await ethereum.request({ method: "eth_requestAccounts", });
             dispatch({
                 type: Type.CONNECT,
                 payload: { address: accounts[0], bool: true }
             })
+            dispatch({
+                type: Type.CONNECTING,
+                payload: false
+            })
         } catch (error) {
             console.log(error);
+            dispatch({
+                type: Type.CONNECTING,
+                payload: false
+            })
         }
     };
 

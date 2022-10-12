@@ -12,7 +12,7 @@ function Contracts() {
     const addr = shortenAddress(currentAccount);
     
     return (
-        <div className='p-4 md:p-8'>
+        <div className='p-4 md:p-8 h-screen bg-[#1F2131]'>
             <div className='flex justify-between items-center py-4'>
                 <Link
                     className="text-[#FF7132] text-lg delay-150 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out flex justify-center items-center" 
@@ -20,14 +20,14 @@ function Contracts() {
                     <BsArrowLeft className="items-center mr-2" />
                     Back
                 </Link>
-                <p>Connected to: <span className="border p-2 border-[#FF7132]">{addr}</span></p>
+                <p className="border px-3 py-2 border-[#FF7132] rounded-full text-white font-bold">{addr}</p>
             </div>
             <div className='flex flex-row gap-6'>
                 <div className='basis-1/2'>
                     <NewContract />
                 </div>
                 <div className='basis-1/2 flex justify-center flex-col items-center'>
-                    <h1 className='mb-4'>
+                    <h1 className='mb-4 text-white'>
                         {contracts?.length === 0 ? 'No Contracts available' : 'Existing Contracts'}
                     </h1>
                     <div className='flex flex-col w-full gap-4'>

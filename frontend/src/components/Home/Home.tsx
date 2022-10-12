@@ -2,18 +2,20 @@ import { FC, useContext } from "react";
 import { Link } from "react-router-dom";
 import { EscrowContext } from "../../context/EscrowContext";
 import { BsArrowRight } from 'react-icons/bs';
+import Loader from "../Loader/Loader";
 
 const Home: FC = (): JSX.Element => {
 
-    const { state: { isConnected }, connectWallet } = useContext(EscrowContext);
+    const { state: { isConnected, isConnecting }, connectWallet } = useContext(EscrowContext);
     
     return (
-        <div className="h-screen flex justify-center items-center flex-col bg-[#1F2131] gap-4">
-            <h1 className="text-[#FF7132] transition duration-150 ease-in-out font-[2000] font-mono text-5xl">DAI Escrow safe Transactions</h1>
-            <p className="text-[#f3f1f3] transition duration-150 ease-in-out font-mono text-2xl">Send Your DAI Safely</p>
+        <div className="h-screen justify-center items-center flex flex-row bg-[#1F2131] gap-2 p-5">
+            <div className="basis-1/2 justify-center items-center">
+            <h1 className="text-[#f3f1f3] font-extrabold text-5xl">Make safe Transactions</h1>
+            <p className="gradient_text">Send Your DAI Safely</p>
             {isConnected ? (
                 <Link
-                    className="text-[#FF7132] text-lg delay-150 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out flex justify-center items-center" 
+                    className="link" 
                     to='/Contracts'>
                     Go to Contracts
                     <BsArrowRight className="items-center ml-2" />
@@ -21,10 +23,18 @@ const Home: FC = (): JSX.Element => {
             ) : (
                 <button
                     onClick={() => connectWallet()}
-                    className="delay-150 hover:-translate-y-1 hover:scale-110 bg-[#FF7132] px-3 py-2 whitespace-nowrap align-middle shadow hover:shadow-orange-400 rounded-full text-white text-xs md:text-sm font-mono transition duration-150 ease-in-out">
-                    Connect Wallet
+                    className="btn"
+                    disabled={isConnecting}>
+                    {isConnecting ? <Loader text={"connecting..."} /> : 'Connect Wallet'}
                 </button>
             )}
+            </div>
+            <div className="basis-1/2 flex justify-center items-center align-middle relative">
+                {/* {[48, 56, 72, 80, 96].map((l, index) => (
+                    <div key={index} className={`rounded-full absolute h-${l} w-${l} shadow-[#FF7132] shadow-2xl`} />
+                ))} */}
+                <div className={`rounded-full absolute h-56 w-56 shadow-[#FF7132] shadow-2xl`} />
+            </div>
         </div>
     )
 }
