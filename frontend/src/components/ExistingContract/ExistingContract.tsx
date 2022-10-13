@@ -25,11 +25,11 @@ const ExistingContract: FC<ContractProp> = ({ arbiter, contractAddress, benefici
             <p className="font-bold text-black">View on Etherscan: <a className="text-sky-700" href={`https://kovan.etherscan.io/address/${contractAddress}`} target="_blank">Etherscan</a></p>
             <p className="text-md font-serif">${amount} DAI</p>
             {isSubmitting ? (
-                <Loader />
+                <Loader text={"approving..."} />
             ) : (
                 <button
                     onClick={() => approveContract(contractAddress, _id, arbiter)}
-                    className={`${approved ? 'bg-[#5aa75a]' : 'bg-[#1F2131] delay-150 hover:-translate-y-1 hover:scale-102 transition ease-in'} px-2 py-1 text-white`} disabled={approved}>
+                    className={`${approved ? 'bg-[#5aa75a]' : 'btn'}`} disabled={approved}>
                     {approved ? '✓ Its been approved!' : 'Approve Escrow'}
                 </button>
             )}
