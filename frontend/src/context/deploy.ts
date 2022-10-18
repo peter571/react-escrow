@@ -31,7 +31,8 @@ export async function deploy(arbiter: string, beneficiary: string, value: BigNum
       await tx.wait();
 
       const factory = new ethers.ContractFactory(Escrow.abi, Escrow.bytecode, signer);
-      return factory.deploy(poolAddress, aDaiAddress, daiAddress, arbiter, beneficiary, value);
+      const contract = await factory.deploy(poolAddress, aDaiAddress, daiAddress, arbiter, beneficiary, value);
+      return contract;
     }
     catch (err: any) {
       alert(err.message);
