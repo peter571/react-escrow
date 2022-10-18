@@ -6,7 +6,6 @@ declare var window: any;
 
 const { ethereum } = window;
 
-// you can find a list of all AAVE contracts deployed to kovan here:
 // https://docs.aave.com/developers/deployed-contracts
 const poolAddress = "0xE0fBa4Fc209b4948668006B2bE61711b7f465bAe";
 const aDaiAddress = "0x6dDFD6364110E9580292D9eCC745F75deA7e72c8";
@@ -17,7 +16,7 @@ export async function deploy(arbiter: string, beneficiary: string, value: BigNum
   const provider = new ethers.providers.Web3Provider(ethereum);
   const network = await provider.getNetwork();
 
-  if (network.chainId === 42) {
+  if (network.chainId === 5) {
     try {
       const signer = provider.getSigner();
       const signerAddress = await signer.getAddress();
@@ -39,7 +38,7 @@ export async function deploy(arbiter: string, beneficiary: string, value: BigNum
     }
   }
   else {
-    alert("Invalid network, please choose Kovan!");
+    alert("Invalid network, please choose Goerli!");
   }
 }
 
