@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 const API = axios.create({
-    baseURL: 'https://dai-escrow.herokuapp.com'
+    baseURL: 'https://escrow-swin.onrender.com'
 })
 
 const responseBody = (response: AxiosResponse) => response;

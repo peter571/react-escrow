@@ -131,6 +131,8 @@ export const EscrowProvider = ({ children }: EscrowProp) => {
         checkIfWalletIsConnect()
         fetchContracts().then((result) => {
             const { data } = result;
+            console.log(data);
+            
             dispatch({
                 type: Type.FETCH,
                 payload: data
