@@ -15,8 +15,6 @@ We'll have three parties involved in the Escrow:
  - `Beneficiary` - The receiver of the funds. They will provide some service or good to the depositor before the funds are transferred by the arbiter.
  - `Arbiter` - The approver of the transaction. They alone can move the funds when the goods/services have been provided
 
-Here is the complete deployed functional Dapp [Dai-EScrow](https://dai-escrow.netlify.app/)
-
 ## Project Layout
 
 There are three top-level folders:
